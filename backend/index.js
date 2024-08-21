@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { connectDatabase } from "./config/connectDB.js";
 import errorMiddleware from "./middleware/errors.js";
+import traineeRoute from "./routes/authRoute.js";
 
 
 // Handle Uncaught exceptions
@@ -27,6 +28,7 @@ app.get("/",(req,res)=>{
     res.send("hell i am back");
 })
 
+app.use("/api",traineeRoute);
 
 // Using error middleware
 app.use(errorMiddleware);

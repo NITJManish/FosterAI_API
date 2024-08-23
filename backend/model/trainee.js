@@ -1,18 +1,13 @@
 import mongoose from 'mongoose';
 
 const traineeSchema = new mongoose.Schema({
-    photo: String,
     fullName: { type: String, required: true },
     dateOfBirth: { type: Date, required: true },
     gender: { type: String, required: true },
     emailAddress: { type: String, required: true, unique: true },
     phoneNumber: { type: String, required: true, unique: true },
     address: {
-        street: String,
-        city: String,
-        state: String,
-        zipCode: String,
-        country: String
+        type:String, required:true
     },
     educationLevel: { type: String, required: true },
     coursesInterested: { type: [String], required: true },

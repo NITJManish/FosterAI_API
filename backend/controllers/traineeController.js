@@ -6,7 +6,7 @@ import {authenticate} from '../middleware/auth.js'
 
 export const registerTrainee = async (req, res) => {
     try {
-        const { fullName, dateOfBirth, gender, emailAddress, phoneNumber, address, educationLevel, coursesInterested } = req.body;
+        const { fullName, dateOfBirth, gender, emailAddress, phoneNumber, address, highestQualification,collegeName, coursesInterested } = req.body;
 
         const password =await generatePassword();
 
@@ -17,7 +17,8 @@ export const registerTrainee = async (req, res) => {
             emailAddress,
             phoneNumber,
             address,
-            educationLevel,
+            highestQualification,
+            collegeName,
             coursesInterested,
             password
         });
@@ -51,7 +52,7 @@ export const login = async (req, res) => {
 export const getTraineeData = async (req, res) => {
     try {
        
-        const trainee = await Trainee.find();
+        const trainee = await Trainee.find({});
   
         if (!trainee) {
             return res.status(401).json({ message: 'No trainee found' });

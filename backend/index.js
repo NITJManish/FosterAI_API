@@ -2,6 +2,7 @@ import express from "express";
 const app = express();
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import cors from 'cors'
 import { connectDatabase } from "./config/connectDB.js";
 import errorMiddleware from "./middleware/errors.js";
 import traineeRoute from "./routes/authRoute.js";
@@ -23,6 +24,12 @@ app.use(
   express.json()
 );
 app.use(cookieParser());
+
+// Setup CORS
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+}));
 
 app.get("/",(req,res)=>{
     res.send("hell i am back");

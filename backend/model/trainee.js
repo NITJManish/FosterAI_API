@@ -9,7 +9,8 @@ const traineeSchema = new mongoose.Schema({
     address: {
         type:String, required:true
     },
-    educationLevel: { type: String, required: true },
+    highestQualification: { type: String, required: true },
+    collegeName: { type: String, required: true },
     coursesInterested: { type: [String], required: true },
     applyDate: { type: Date, default: Date.now },
     password: { type: String  }
